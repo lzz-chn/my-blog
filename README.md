@@ -1,19 +1,8 @@
-# mg-blog
+博客基于 Vue.js 使用 Vue-Cli3 脚手架， 样式使用 Less 编写。
 
-## Project setup
-```
-npm install
-```
+博客后台界面基于 Vue.js 使用 Vue-Cli3 脚手架，UI使用 Element UI 组件库。后台功能基于 Node.js 使用 Express 框架，数据管理使用 MySQL 管理系统。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+GitHub 地址
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 博客及后台界面：https://github.com/lzz-chn/my-blog
+- 后台功能：https://github.com/lzz-chn/my-blog-backstage

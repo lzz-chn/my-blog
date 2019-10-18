@@ -1,28 +1,112 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<router-view :userInfo="userInfo" />
+		<router-view name="Home" :userInfo="userInfo" :articleList="articleList" />
+		<router-view name="Article" :userInfo="userInfo" />
+		<router-view name="Classify" />
+		<router-view name="About" :website="website" />
+		<router-view name="Footer" />
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	data() {
+		return {
+			userInfo: {
+				name: '',
+				slogan: '',
+				inform: '',
+				avatar: '',
+				bgImg: ''
+			},
+			articleList: [],
+			website: {
+				name: '',
+				icon: '',
+				about: ''
+			}
+		}
+	},
+	created() {
+		this.updateData()
+	},
+	watch: {
+		$route: 'updateData'
+	},
+	methods: {
+		updateData() {
+			this.$axios
+				.get('/admin/getUserInfo')
+				.then(res => {
+					for (let i in res.data) {
+						this.userInfo[i] = res.data[i]
+					}
+				})
+				.catch(error => {
+					console.log('error :', error)
+					this.$message.error('服务器链接异常')
+				})
+
+			this.$axios
+				.get('/admin/getArticleList')
+				.then(res => {
+					this.articleList = res.data
+				})
+				.catch(error => {
+					console.log('error :', error)
+					this.$message.error('服务器链接异常')
+				})
+
+			this.$axios
+				.get('/admin/getWebsite')
+				.then(res => {
+					for (let i in res.data) {
+						this.website[i] = res.data[i]
+					}
+				})
+				.catch(error => {
+					console.log('error :', error)
+					this.$message.error('服务器链接异常')
+				})
+		}
+	}
 }
 </script>
 
 <style lang="less">
+html,
+body {
+	height: 100%;
+}
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+	font-weight: 400;
+}
+a {
+	color: inherit;
+	font-size: inherit;
+	text-decoration: none;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	height: 100%;
+	overflow: auto;
+	/*滚动条整体样式*/
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+	/*滚动条滑块*/
+	&::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background: #35b995;
+	}
+	/*滚动条轨道*/
+	&::-webkit-scrollbar-track {
+		background: #fff;
+	}
 }
 </style>
