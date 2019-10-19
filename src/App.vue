@@ -49,11 +49,7 @@ export default {
 			this.$axios
 				.get('/admin/getArticleList')
 				.then(res => {
-					_self.articleList = res.data
-					console.log('articleList :', _self.articleList);
-					// for (let i in res.data) {
-					// 	_self.articleList[i] = res.data[i]
-					// }
+					this.articleList = res.data
 				})
 
 			this.$axios

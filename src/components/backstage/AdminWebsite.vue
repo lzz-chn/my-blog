@@ -100,106 +100,16 @@ export default {
 					this.website[i] = res.data[i]
 				}
 			})
-			.catch(error => {
-				console.log('error :', error)
-				this.$message.error('服务器链接异常')
-			})
 	},
 	methods: {
-		// bgRequest(item) {
-		// 	this.titleImgFile = item.file // 获取上传文件
-		// },
-		// // 处理图片的变化
-		// proveChange(file, size) {
-		// 	const isType = file.raw.type.match(/^image\/(x-icon)$/)
-		// 	const isLtSize = file.size / 1024 / 1024 < size // 小于 size M
-
-		//     console.log('file :', file);
-		// 	if (!isType) {
-		// 		this.$message.error('上传图片只支持 ICO 格式!')
-		// 	}
-		// 	if (!isLtSize) {
-		// 		this.$message.error(`上传图片大小不能超过 ${size}MB!`)
-		// 	}
-		// 	if (isType && isLtSize) {
-		// 		this.website.icon = URL.createObjectURL(file.raw)
-		// 		this.titleImgFile = true // 有图片上传
-		// 		sessionStorage.setItem('articleBg', file.raw)
-		// 	} else {
-		// 		this.$refs.uploadBg.clearFiles()
-		// 	}
-		// },
-		// handleBgrChange(file) {
-		// 	this.proveChange(file, 2)
-		// },
 		mavon(value, render) {
 			this.website.about = render
 		},
 		onSubmit() {
-			// console.log('this.titleImgFile :', this.titleImgFile)
-			// if (this.titleImgFile) {
-			// 	this.$refs.uploadBg.submit()
-			// 	let param = new FormData()
-			// 	param.append('img', this.titleImgFile)
-			// 	param.append('form', 'website')
-			// 	param.append('name', 'icon')
-			// 	param.append('id', '1')
-			// 	this.$axios({
-			// 		method: 'post',
-			// 		url: '/admin/uploadImg',
-			// 		headers: { 'Content-Type': 'multipart/form-data' },
-			// 		data: param
-			// 	})
-			// 		.then(titleImg => {
-			// 			this.website.icon = titleImg.data.imgUrl
-			// 			this.$axios
-			// 				.post(
-			// 					'/admin/setWebsite',
-			// 					this.$qs.stringify({
-			// 						name: this.website.name,
-			// 						icon: this.website.icon,
-			// 						about: this.website.about
-			// 					})
-			// 				)
-			// 				.then(res => {
-			// 					this.$message.success('提交成功')
-			// 				})
-			// 		})
-			// 		.catch(error => {
-			// 			console.log('error :', error)
-			// 			this.$message.error('服务器链接异常')
-			// 		})
-			// } else {
-			// 	this.$axios
-			// 		.post(
-			// 			'/admin/setWebsite',
-			// 			this.$qs.stringify({
-			// 				name: this.website.name,
-			// 				icon: this.website.icon,
-			// 				about: this.website.about
-			// 			})
-			// 		)
-			// 		.then(res => {
-			// 			this.$message.success('提交成功')
-			// 		})
-			// 		.catch(error => {
-			// 			console.log('error :', error)
-			// 			this.$message.error('服务器链接异常')
-			// 		})
-			// }
 			this.$axios
-				.post(
-					'/admin/setWebsite',
-					this.$qs.stringify({
-						about: this.website.about
-					})
-				)
+				.post('/admin/setWebsite', { about: this.website.about })
 				.then(res => {
 					this.$message.success('提交成功')
-				})
-				.catch(error => {
-					console.log('error :', error)
-					this.$message.error('服务器链接异常')
 				})
 		},
 		goBack() {

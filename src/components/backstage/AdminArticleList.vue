@@ -57,17 +57,8 @@
 						<el-input v-model="search" size="mini" placeholder="输入文章名称搜索" />
 					</template>
 					<template slot-scope="scope">
-						<el-button
-							size="mini"
-							@click="handleEdit(scope.$index, scope.row)"
-							icon="el-icon-edit"
-						>编辑</el-button>
-						<el-button
-							size="mini"
-							type="danger"
-							icon="el-icon-delete"
-							@click="handleDelete(scope.$index, scope.row)"
-						>删除</el-button>
+						<el-button size="mini" @click="handleEdit(scope.$index, scope.row)" icon="el-icon-edit">编辑</el-button>
+						<el-button size="mini" type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -88,26 +79,19 @@ export default {
 		this.$axios
 			.get('/admin/getArticleList')
 			.then(res => {
-				console.log('res.data :', res.data)
 				if (res.data.length) {
 					this.tableData = res.data
 				}
 			})
-			.catch(error => {
-				console.log('error :', error)
-				this.$message.error('服务器链接异常')
-			})
 	},
 	methods: {
 		handleEdit(index, row) {
-			console.log(index, row)
 			this.$router.push({
 				path: '/admin/articleItem',
 				query: { row }
 			})
 		},
 		handleDelete(index, row) {
-			console.log('row :', row)
 			this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
@@ -115,13 +99,10 @@ export default {
 			})
 				.then(() => {
 					this.$axios
-						.post(
-							'/admin/deleteArticleItem',
-							this.$qs.stringify({
-								id: row.id,
-								img: row.titleImg
-							})
-						)
+						.post('/admin/deleteArticleItem', {
+							id: row.id,
+							img: row.titleImg
+						})
 						.then(res => {
 							console.log('res.data :', res.data)
 							this.$message({
@@ -136,15 +117,10 @@ export default {
 									}
 								})
 						})
-						.catch(error => {
-							console.log('error :', error)
-							this.$message.error('服务器链接异常')
-						})
 				})
 				.catch(() => {
 					this.$message({ type: 'info', message: '已取消删除' })
 				})
-			console.log('row.id :', row.id)
 		},
 		filterTag(value, row) {
 			return row.classify === value

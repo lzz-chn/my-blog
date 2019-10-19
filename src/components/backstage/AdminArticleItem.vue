@@ -52,12 +52,7 @@
 					<el-input v-model.number="article.hot"></el-input>
 				</el-form-item>
 				<el-form-item label="内容">
-					<quillEditor
-						class="quillEditor"
-						ref="myEditor"
-						v-model="article.content"
-						:options="editorOption"
-					></quillEditor>
+					<quillEditor class="quillEditor" ref="myEditor" v-model="article.content" :options="editorOption"></quillEditor>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="onSubmit">提交</el-button>
@@ -170,40 +165,11 @@ export default {
 					url: '/admin/uploadImg',
 					headers: { 'Content-Type': 'multipart/form-data' },
 					data: param
-				})
-					.then(titleImg => {
-						this.article.titleImg = titleImg.data.imgUrl
-						// console.log('titleImg.data:', titleImg.data)
-						this.$axios
-							.post(
-								'/admin/setArticleItem',
-								this.$qs.stringify({
-									id: titleImg.data.id,
-									name: this.article.name,
-									classify: this.article.classify,
-									content: this.article.content,
-									titleImg: this.article.titleImg,
-									hot: this.article.hot,
-									top: this.article.top,
-									focus: this.article.focus,
-									focusP: this.article.focusP
-								})
-							)
-							.then(res => {
-								this.$message.success('提交成功')
-								this.$router.push('/admin/articleList')
-							})
-					})
-					.catch(error => {
-						console.log('error :', error)
-						this.$message.error('服务器链接异常')
-					})
-			} else {
-				this.$axios
-					.post(
-						'/admin/setArticleItem',
-						this.$qs.stringify({
-							id: this.$route.query.row.id,
+				}).then(titleImg => {
+					this.article.titleImg = titleImg.data.imgUrl
+					this.$axios
+						.post('/admin/setArticleItem', {
+							id: titleImg.data.id,
 							name: this.article.name,
 							classify: this.article.classify,
 							content: this.article.content,
@@ -213,14 +179,27 @@ export default {
 							focus: this.article.focus,
 							focusP: this.article.focusP
 						})
-					)
+						.then(res => {
+							this.$message.success('提交成功')
+							this.$router.push('/admin/articleList')
+						})
+				})
+			} else {
+				this.$axios
+					.post('/admin/setArticleItem', {
+						id: this.$route.query.row.id,
+						name: this.article.name,
+						classify: this.article.classify,
+						content: this.article.content,
+						titleImg: this.article.titleImg,
+						hot: this.article.hot,
+						top: this.article.top,
+						focus: this.article.focus,
+						focusP: this.article.focusP
+					})
 					.then(res => {
 						this.$message.success('提交成功')
 						this.$router.push('/admin/articleList')
-					})
-					.catch(error => {
-						console.log('error :', error)
-						this.$message.error('服务器链接异常')
 					})
 			}
 		},

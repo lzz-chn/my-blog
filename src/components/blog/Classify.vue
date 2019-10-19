@@ -33,11 +33,6 @@ export default {
 				// console.log('res.data :', res.data)
 				this.articleList = res.data
 			})
-		// .catch(error => {
-		// 	console.log('error :', error)
-		// 	this.$message.error('服务器链接异常')
-		// })
-		// console.log('this.$route :', this.$route)
 	}
 }
 </script>

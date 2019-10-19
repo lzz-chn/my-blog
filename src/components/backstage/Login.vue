@@ -4,12 +4,7 @@
 			<div class="title">后台管理系统</div>
 			<el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="content">
 				<el-form-item prop="user">
-					<el-input
-						v-model="ruleForm.user"
-						placeholder="请输入账号"
-						clearable
-						prefix-icon="el-icon-user"
-					></el-input>
+					<el-input v-model="ruleForm.user" placeholder="请输入账号" clearable prefix-icon="el-icon-user"></el-input>
 				</el-form-item>
 				<el-form-item prop="pwd">
 					<el-input
@@ -56,20 +51,11 @@ export default {
 	},
 	created() {
 		this.$axios
-			.post(
-				'/admin',
-				this.$qs.stringify({
-					user: localStorage.getItem('adminName')
-				})
-			)
+			.post('/admin', { user: localStorage.getItem('adminName') })
 			.then(response => {
 				if (response.data.includes('existed')) {
 					this.$router.push('/admin')
 				}
-			})
-			.catch(error => {
-				console.log('error :', error)
-				this.$message.error('服务器链接异常')
 			})
 	},
 	methods: {
@@ -77,13 +63,10 @@ export default {
 			this.$refs.ruleForm.validate(valid => {
 				if (valid) {
 					this.$axios
-						.post(
-							'/admin/login',
-							this.$qs.stringify({
-								user: this.$data.ruleForm.user,
-								pwd: this.$data.ruleForm.pwd
-							})
-						)
+						.post('/admin/login', {
+							user: this.$data.ruleForm.user,
+							pwd: this.$data.ruleForm.pwd
+						})
 						.then(response => {
 							if (response.data.includes('success')) {
 								this.$message.success('登录成功')
@@ -95,10 +78,6 @@ export default {
 							} else {
 								this.$message.error('登录失败')
 							}
-						})
-						.catch(error => {
-							console.log('error :', error)
-							this.$message.error('服务器链接异常')
 						})
 				} else {
 					console.log('error submit!!')
@@ -144,7 +123,7 @@ export default {
 				width: 100%;
 			}
 		}
-		p{
+		p {
 			position: relative;
 			top: -13px;
 			left: 20px;

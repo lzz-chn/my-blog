@@ -7,11 +7,7 @@
 		<div class="focus">
 			<div class="title">聚焦</div>
 			<div class="features">
-				<router-link
-					v-for="v in focusData"
-					:key="v.id"
-					:to="{ name: 'Article', query: v}"
-				>
+				<router-link v-for="v in focusData" :key="v.id" :to="{ name: 'Article', query: v}">
 					<div class="feature-hover">
 						<h4>{{v.name}}</h4>
 					</div>
@@ -51,10 +47,7 @@ export default {
 	props: ['userInfo', 'articleList'],
 	components: { ArticleInfo },
 	data() {
-		return {
-			// articleList: [],
-			focusData: []
-		}
+		return { focusData: [] }
 	},
 	created() {
 		let tmp = []
@@ -67,8 +60,6 @@ export default {
 		this.focusData[0] = tmp.find((v, i) => v.focusP == '左')
 		this.focusData[1] = tmp.find((v, i) => v.focusP == '中')
 		this.focusData[2] = tmp.find((v, i) => v.focusP == '右')
-
-		// console.log('this.focusData :', this.focusData)
 	}
 }
 </script>

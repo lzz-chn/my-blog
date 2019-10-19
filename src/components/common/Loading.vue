@@ -9,14 +9,9 @@ export default {
 		return {}
 	},
 	mounted() {
-		// console.log('loading:', sessionStorage.getItem('params'))
 		setTimeout(() => {
-			// this.$router.push({
-			// 	name: sessionStorage.getItem('path'),
-			// 	params: sessionStorage.getItem('params')
-			// })
-			this.$router.push(sessionStorage.getItem('path'))
-		}, 2000)
+			this.$router.replace(sessionStorage.getItem('path'))
+		}, 1000)
 	}
 }
 </script>

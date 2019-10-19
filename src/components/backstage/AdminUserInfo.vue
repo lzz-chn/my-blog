@@ -80,10 +80,6 @@ export default {
 					this.userInfo[i] = res.data[i]
 				}
 			})
-			.catch(error => {
-				console.log('error :', error)
-				this.$message.error('服务器链接异常')
-			})
 	},
 	methods: {
 		avatarRequest(item) {
@@ -172,16 +168,13 @@ export default {
 				})
 
 			const uploadUserInfo = () =>
-				this.$axios.post(
-					'/admin/setUserInfo',
-					this.$qs.stringify({
-						name: this.userInfo.name,
-						slogan: this.userInfo.slogan,
-						inform: this.userInfo.inform,
-						avatar: this.userInfo.avatar,
-						bgImg: this.userInfo.bgImg
-					})
-				)
+				this.$axios.post('/admin/setUserInfo', {
+					name: this.userInfo.name,
+					slogan: this.userInfo.slogan,
+					inform: this.userInfo.inform,
+					avatar: this.userInfo.avatar,
+					bgImg: this.userInfo.bgImg
+				})
 
 			this.$axios
 				.all([uploadAvatar(), uploadBgImg()])
@@ -193,22 +186,14 @@ export default {
 						if (this.bgImgFile) {
 							this.userInfo.bgImg = bg.data.imgUrl
 						}
-						console.log('avatar :', avatar.data)
-						console.log('bg :', bg.data)
 						uploadUserInfo()
 							.then(userInfo => {
 								console.log('userInfo :', userInfo)
 								this.$message.success('提交成功')
 								this.$mounted()
 							})
-							.catch(error => {
-								console.log('error :', error)
-							})
 					})
 				)
-				.catch(error => {
-					console.log('error :', error)
-				})
 		},
 		goBack() {
 			this.$confirm(

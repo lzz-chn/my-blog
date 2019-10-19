@@ -108,21 +108,13 @@ export default {
 	},
 	created() {
 		this.$axios
-			.post(
-				'/admin',
-				this.$qs.stringify({
-					user: localStorage.getItem('adminName')
-				})
-			)
+			.post('/admin', { user: localStorage.getItem('adminName') })
 			.then(response => {
 				if (response.data.includes('not found')) {
 					this.$router.push('/admin/login')
 				} else {
 					this.$router.push('/admin/home')
 				}
-			})
-			.catch(error => {
-				console.log('error :', error)
 			})
 	}
 }
