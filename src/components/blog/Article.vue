@@ -7,25 +7,13 @@
 				@mouseout="scale = 'title-img'"
 				:style="bgImg"
 			></div>
-			<!-- <p>Akina for Typecho 主题模板context</p> -->
 			<p>{{article.name}}</p>
 		</div>
 		<div class="content">
 			<div class="title">
-				<!-- <h1>Akina for Typecho 主题模板context</h1> -->
 				<h1>{{article.name}}</h1>
 				<hr />
 			</div>
-			<!-- <div class="text">
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore repellat velit, expedita ipsam nam totam facere quibusdam. Repellendus veritatis aut, repudiandae, ab blanditiis ipsa laborum reprehenderit eveniet iusto unde architecto.
-			</div>-->
 			<div class="text" v-html="article.content"></div>
 			<div class="footer">
 				<div

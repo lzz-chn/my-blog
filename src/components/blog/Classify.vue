@@ -26,19 +26,17 @@ export default {
 			: null
 		this.$axios
 			.get('/admin/getClassify', {
-				params: {
-					classify: this.$route.query.type,
-					name: this.name
-				}
+				classify: this.$route.query.type,
+				name: this.name
 			})
 			.then(res => {
-				console.log('res.data :', res.data)
+				// console.log('res.data :', res.data)
 				this.articleList = res.data
 			})
-			.catch(error => {
-				console.log('error :', error)
-				this.$message.error('服务器链接异常')
-			})
+		// .catch(error => {
+		// 	console.log('error :', error)
+		// 	this.$message.error('服务器链接异常')
+		// })
 		// console.log('this.$route :', this.$route)
 	}
 }

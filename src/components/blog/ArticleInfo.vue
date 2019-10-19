@@ -6,7 +6,6 @@
 					<img :src="v.titleImg" class="user" />
 					<div class="title" :v-if="v.id % 2 == 0">
 						<h2>
-							<!-- <span v-if="false">[置顶]</span> -->
 							<span v-if="v.top == 'true' ? true : false">[推荐]</span>
 							{{v.name}}
 						</h2>
@@ -58,65 +57,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <div class="article-right">
-			<router-link to="/article">
-				<img src="@/assets/deu7.jpg" class="user" />
-			</router-link>
-			<div class="article-content">
-				文艺版突然间自己站在熙熙攘攘的街上，马路牙子上还有刚刚抽过的烟头。走过斑马线也会有人时不时的撞我，一切如常我也能感受到自己呼出来的热气...
-				<div>
-					<div class="time">
-						<i class="el-icon-time"></i>
-						<span>2019-8-7</span>
-					</div>
-				</div>
-			</div>
-			<div class="more">
-				<span class="border-line"></span>
-			</div>
-			<div class="article-hover">
-				<p>
-					<i class="el-icon-chat-dot-round"></i>
-					<span>5条评论</span>
-				</p>
-				<p>
-					<i class="el-icon-view"></i>
-					<span>378热度</span>
-				</p>
-			</div>
-		</div>-->
-		<!-- <div class="article-right">
-			<router-link to="/article">
-				<img src="@/assets/deu7.jpg" class="user" />
-			</router-link>
-			<div class="article-content">
-				文艺版突然间自己站在熙熙攘攘的街上，马路牙子上还有刚刚抽过的烟头。走过斑马线也会有人时不时的撞我，一切如常我也能感受到自己呼出来的热气...
-				<div>
-					<div class="time">
-						<i class="el-icon-time"></i>
-						<span>2019-8-7</span>
-					</div>
-				</div>
-			</div>
-			<div class="more">
-				<span class="border-line"></span>
-			</div>
-			<div class="article-hover">
-				<p>
-					<i class="el-icon-chat-dot-round"></i>
-					<span>5条评论</span>
-				</p>
-				<p>
-					<i class="el-icon-view"></i>
-					<span>378热度</span>
-				</p>
-			</div>
-		</div>-->
-
-		<!-- <div class="load-more">
-			<router-link to="/">加载更多</router-link>
-		</div>-->
 	</div>
 </template>
 

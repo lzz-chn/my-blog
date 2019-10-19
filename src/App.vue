@@ -37,6 +37,7 @@ export default {
 	},
 	methods: {
 		updateData() {
+			let _self = this;
 			this.$axios
 				.get('/admin/getUserInfo')
 				.then(res => {
@@ -44,19 +45,15 @@ export default {
 						this.userInfo[i] = res.data[i]
 					}
 				})
-				.catch(error => {
-					console.log('error :', error)
-					this.$message.error('服务器链接异常')
-				})
 
 			this.$axios
 				.get('/admin/getArticleList')
 				.then(res => {
-					this.articleList = res.data
-				})
-				.catch(error => {
-					console.log('error :', error)
-					this.$message.error('服务器链接异常')
+					_self.articleList = res.data
+					console.log('articleList :', _self.articleList);
+					// for (let i in res.data) {
+					// 	_self.articleList[i] = res.data[i]
+					// }
 				})
 
 			this.$axios
@@ -65,10 +62,6 @@ export default {
 					for (let i in res.data) {
 						this.website[i] = res.data[i]
 					}
-				})
-				.catch(error => {
-					console.log('error :', error)
-					this.$message.error('服务器链接异常')
 				})
 		}
 	}

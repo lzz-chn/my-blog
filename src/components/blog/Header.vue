@@ -93,7 +93,6 @@ export default {
 	},
 	methods: {
 		search() {
-			console.log('this.searchData :', this.searchData)
 			this.$router.push(
 				`/classify/name?type='name'&name='${this.searchData}'`
 			)

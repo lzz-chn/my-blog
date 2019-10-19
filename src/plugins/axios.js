@@ -2,12 +2,13 @@ import Vue from 'vue';
 import store from './../store';
 import axios from 'axios';
 import qs from 'qs'; // 引入qs模块，用来序列化post类型的数据
-
+import { Message } from 'element-ui';
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = process.env.development;
-axios.defaults.baseURL = process.env.production;
-axios.defaults.headers.common['Authorization'] = store.state.token;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+// axios.defaults.baseURL = process.env.development;
+// axios.defaults.baseURL = process.env.VUE_APP_BASE_API;
+axios.defaults.baseURL = 'http://39.105.144.5:3000';
+// axios.defaults.headers.common['Authorization'] = store.state.token;
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 // 请求拦截器
 axios.interceptors.request.use(
@@ -19,6 +20,8 @@ axios.interceptors.request.use(
         return config;
     },
     error => {
+        Message.error('请求异常');
+        console.log('请求异常 :', error);
         return Promise.error(error);
     }
 );
@@ -26,58 +29,31 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
     response => {
-        if (response.status === 200) {
-            return Promise.resolve(response);
-        } else {
-            return Promise.reject(response);
-        }
+        // if (response.status === 200) {
+        //     return Promise.resolve(response);
+        // } else {
+        //     return Promise.reject(response);
+        // }
+        return Promise.resolve(response);
     },
     error => {
+        Message.error('响应异常');
+        console.log('响应异常 :', error);
         return Promise.reject(error);
     }
 );
 
-// 封装 get
-get = (url, params) => {
-    return new Promise((resolve, reject) => {
-        axios
-            .get(url, { params: params })
-            .then(res => {
-                resolve(res.data);
-            })
-            .catch(err => {
-                reject(err.data);
-            });
-    });
-};
-
-// 封装 post
-post = (url, params) => {
-    return new Promise((resolve, reject) => {
-        axios
-            .post(url, qs.stringify(params))
-            .then(res => {
-                resolve(res.data);
-            })
-            .catch(err => {
-                reject(err.data);
-            });
-    });
-};
-
 Plugin.install = function(Vue, options) {
-    // Vue.axios = _axios;
-    // window.axios = _axios;
-    Object.defineProperties(Vue.prototype, {
-        $axios: {
-            get() {
-                return get;
-            },
-            post() {
-                return post;
-            }
+    Vue.prototype.$axios = {
+        // 封装 get
+        get(url, params) {
+            return axios.get(url, { params })
+        },
+        // 封装 post
+        post(url, params) {
+            return axios.post(url, qs.stringify(params))
         }
-    });
+    };
 };
 
 Vue.use(Plugin);
