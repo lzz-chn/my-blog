@@ -3,13 +3,11 @@ import store from './../store';
 import axios from 'axios';
 import qs from 'qs'; // 引入qs模块，用来序列化post类型的数据
 import { Message } from 'element-ui';
-// Full config:  https://github.com/axios/axios#request-config
-// axios.defaults.baseURL = process.env.development;
-// axios.defaults.baseURL = process.env.VUE_APP_BASE_API;
+
 axios.defaults.baseURL = 'http://39.105.144.5:3000';
 // axios.defaults.headers.common['Authorization'] = store.state.token;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-
+ 
 // 请求拦截器
 axios.interceptors.request.use(
     config => {
