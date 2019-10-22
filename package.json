@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "npm run build && gulp deploy"
+    "deploy": "gulp deploy",
+    "ssh": "vue-cli-service build && vue-cli-service ssh"
   },
   "dependencies": {
     "core-js": "^3.1.2",
@@ -27,6 +28,7 @@
     "less-loader": "^5.0.0",
     "vue-cli-plugin-axios": "0.0.4",
     "vue-cli-plugin-element": "^1.0.1",
+    "vue-cli-plugin-ssh": "^1.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "postcss": {
