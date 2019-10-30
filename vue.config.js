@@ -11,12 +11,6 @@ module.exports = {
             password: 'sftp123456',
             remotePath: '/src/',
             localPath: 'dist'
-        },
-        ftpdeploy: {
-            localBasePath: '/',
-            remoteBasePath: '/src/',
-            clear: ["src"],
-            sync: [{ src: '/dist', dest: '/' }]
         }
     }
 };
