@@ -7,7 +7,7 @@ import { Message } from 'element-ui';
 axios.defaults.baseURL = 'http://39.105.144.5:3000';
 // axios.defaults.headers.common['Authorization'] = store.state.token;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
- 
+
 // 请求拦截器
 axios.interceptors.request.use(
     config => {
@@ -41,15 +41,15 @@ axios.interceptors.response.use(
     }
 );
 
-Plugin.install = function(Vue, options) {
+Plugin.install = (Vue, options) => {
     Vue.prototype.$axios = {
         // 封装 get
         get(url, params) {
-            return axios.get(url, { params })
+            return axios.get(url, { params });
         },
         // 封装 post
         post(url, params) {
-            return axios.post(url, qs.stringify(params))
+            return axios.post(url, qs.stringify(params));
         }
     };
 };

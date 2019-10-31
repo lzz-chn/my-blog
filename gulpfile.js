@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const GulpSSH = require('gulp-ssh');
 
 // 需要上传到服务器的路径
-const remotePath = '/src/';
+const remotePath = '/public/';
 const config = {
     ssh: {
         host: '39.105.144.5',
