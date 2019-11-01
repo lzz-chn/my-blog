@@ -1,11 +1,7 @@
 <template>
 	<div class="about">
 		<div class="title-img-wrapper">
-			<div
-				:class="scale"
-				@mouseover="scale = 'title-img title-img-hover'"
-				@mouseout="scale = 'title-img'"
-			></div>
+			<div :class="scale" @mouseover="scale = 'title-img title-img-hover'" @mouseout="scale = 'title-img'"></div>
 			<p>关于</p>
 		</div>
 		<div class="content">
@@ -102,6 +98,22 @@ export default {
 			line-height: 40px;
 			font-size: 18px;
 			margin-bottom: 40px;
+		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.about {
+		.title-img-wrapper {
+			height: 300px;
+		}
+		.content {
+			width: 95%;
+			padding: 0 10px;
+			.text {
+				line-height: 30px;
+				font-size: 18px;
+				margin-bottom: 20px;
+			}
 		}
 	}
 }

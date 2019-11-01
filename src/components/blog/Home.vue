@@ -13,24 +13,6 @@
 					</div>
 					<img :src="v.titleImg" />
 				</router-link>
-				<!-- <router-link to="/">
-					<div class="feature-hover">
-						<h4>feature1</h4>
-					</div>
-					<img src="@/assets/feature1.jpg" />
-				</router-link>
-				<router-link to="/">
-					<div class="feature-hover">
-						<h4>feature2</h4>
-					</div>
-					<img src="@/assets/feature2.jpg" />
-				</router-link>
-				<router-link to="/">
-					<div class="feature-hover">
-						<h4>feature3</h4>
-					</div>
-					<img src="@/assets/feature3.jpg" />
-				</router-link>-->
 			</div>
 		</div>
 		<div class="recent">
@@ -124,6 +106,35 @@ export default {
 		padding: 80px 0 0;
 		.title {
 			.title();
+		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.home {
+		width: 95%;
+		padding: 0;
+		.message {
+			padding: 10px;
+			margin: 0;
+			font-size: 14px;
+			.el-icon-s-comment {
+				font-size: 16px;
+			}
+		}
+		.focus {
+			.features {
+				justify-content: center;
+				flex-wrap: wrap;
+				a {
+					img {
+						height: 160px;
+						width: 280px;
+					}
+				}
+			}
+		}
+		.recent {
+			padding: 15px 0 0;
 		}
 	}
 }

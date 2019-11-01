@@ -1,9 +1,7 @@
 <template>
 	<div class="classify">
 		<div class="results">
-			搜索结果: “
-			<router-view />
-			{{name|| null}}” 下的文章
+			搜索结果: “<router-view />{{name|| $route.query.type}}” 下的文章
 		</div>
 		<p class="wu" v-if="!articleList.length">无</p>
 		<ArticleInfo :articleList="articleList" />
@@ -20,17 +18,17 @@ export default {
 	components: { ArticleInfo },
 	created() {
 		// console.log('classify :', this.$route.query.type)
-		// console.log('name :', this.$route.query.name.replace(/'/g, '') || null)
+		// console.log('name :', this.$route.query.name)
 		this.name = this.$route.query.name
 			? this.$route.query.name.replace(/'/g, '')
 			: null
+
 		this.$axios
 			.get('/admin/getClassify', {
 				classify: this.$route.query.type,
 				name: this.name
 			})
 			.then(res => {
-				// console.log('res.data :', res.data)
 				this.articleList = res.data
 			})
 	}
@@ -60,6 +58,20 @@ export default {
 		text-align: center;
 		color: #828282;
 		margin-bottom: 30px;
+	}
+}
+@media screen and (max-width: 992px) {
+	.classify {
+		width: 95%;
+		margin: 20px auto 0;
+		.results {
+			font-size: 16px;
+		}
+		.wu {
+			text-align: center;
+			color: #828282;
+			margin-bottom: 30px;
+		}
 	}
 }
 </style>

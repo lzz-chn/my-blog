@@ -37,28 +37,22 @@ export default {
 	},
 	methods: {
 		updateData() {
-			let _self = this;
-			this.$axios
-				.get('/admin/getUserInfo')
-				.then(res => {
-					for (let i in res.data) {
-						this.userInfo[i] = res.data[i]
-					}
-				})
+			let _self = this
+			this.$axios.get('/admin/getUserInfo').then(res => {
+				for (let i in res.data) {
+					this.userInfo[i] = res.data[i]
+				}
+			})
 
-			this.$axios
-				.get('/admin/getArticleList')
-				.then(res => {
-					this.articleList = res.data
-				})
+			this.$axios.get('/admin/getArticleList').then(res => {
+				this.articleList = res.data
+			})
 
-			this.$axios
-				.get('/admin/getWebsite')
-				.then(res => {
-					for (let i in res.data) {
-						this.website[i] = res.data[i]
-					}
-				})
+			this.$axios.get('/admin/getWebsite').then(res => {
+				for (let i in res.data) {
+					this.website[i] = res.data[i]
+				}
+			})
 		}
 	}
 }
@@ -96,6 +90,13 @@ a {
 	/*滚动条轨道*/
 	&::-webkit-scrollbar-track {
 		background: #fff;
+	}
+}
+@media screen and (max-width: 992px) {
+	#app {
+		&::-webkit-scrollbar {
+			width: 0;
+		}
 	}
 }
 </style>

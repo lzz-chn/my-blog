@@ -89,18 +89,59 @@ export default {
 		height: 40px;
 		width: 40px;
 		border-radius: 50%;
-		background:#a0dad0;
+		background: #a0dad0;
 		position: fixed;
 		right: 30px;
 		bottom: 30px;
 		display: flex;
-		&:hover{
+		&:hover {
 			box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 		}
 		.el-icon-caret-top {
 			margin: auto;
 			color: #fff;
 			font-size: 22px;
+		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.footer {
+		height: 150px;
+		padding: 25px 0;
+		.content {
+			width: 74%;
+			text-align: center;
+			line-height: 20px;
+		}
+		.icp {
+			top: 50%;
+		}
+		.fade-enter-active,
+		.fade-leave-active {
+			transition: opacity 0.7s;
+		}
+		.fade-enter,
+		.fade-leave-to {
+			opacity: 0;
+		}
+		.back-top {
+			cursor: pointer;
+			height: 40px;
+			width: 40px;
+			border-radius: 50%;
+			background: #a0dad0;
+			position: fixed;
+			right: 30px;
+			bottom: 30px;
+			display: flex;
+			&:hover {
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+			}
+			.el-icon-caret-top {
+				margin: auto;
+				color: #fff;
+				font-size: 22px;
+			}
 		}
 	}
 }

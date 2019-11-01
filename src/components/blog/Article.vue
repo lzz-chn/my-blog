@@ -1,12 +1,7 @@
 <template>
 	<div class="article">
 		<div class="title-img-wrapper">
-			<div
-				:class="scale"
-				@mouseover="scale = 'title-img title-img-hover'"
-				@mouseout="scale = 'title-img'"
-				:style="bgImg"
-			></div>
+			<div :class="scale" @mouseover="scale = 'title-img title-img-hover'" @mouseout="scale = 'title-img'" :style="bgImg"></div>
 			<p>{{article.name}}</p>
 		</div>
 		<div class="content">
@@ -16,11 +11,7 @@
 			</div>
 			<div class="text" v-html="article.content"></div>
 			<div class="footer">
-				<div
-					class="share"
-					@mouseover="socialShare ='social-icon social-icon-hover'"
-					@mouseout="socialShare ='social-icon'"
-				>
+				<div class="share" @mouseover="socialShare ='social-icon social-icon-hover'" @mouseout="socialShare ='social-icon'">
 					<ul :class="socialShare">
 						<li>
 							<a
@@ -364,6 +355,43 @@ export default {
 				width: 160px;
 				margin: 0 auto;
 				border: 1px solid #c7c7c7;
+			}
+		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.article {
+		.title-img-wrapper {
+			height: 300px;
+		}
+		.content {
+			width: 95%;
+			padding: 0 10px;
+			.title {
+				padding: 20px 0 10px;
+			}
+			.text {
+				line-height: 25px;
+				font-size: 14px;
+			}
+			.footer {
+				margin-top: 30px;
+				padding: 20px 10px;
+				height: 65px;
+			}
+			.footer-nav {
+				margin: 25px 0;
+				height: 100px;
+				font-size: 0;
+				> div {
+					.mask {
+						padding: 10px;
+					}
+				}
+			}
+			.author {
+				text-align: center;
+				padding: 20px 12.78%;
 			}
 		}
 	}

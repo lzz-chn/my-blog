@@ -66,22 +66,24 @@ export default {
 	props: ['articleList'],
 	filters: {
 		ellipsis(value) {
-			let text = value.replace(/(<p(\w|\W)*?>|<\/p>)/g, '')
+			let text = value.replace(/(<p(\w|\W)*?>|<\/p>)/g, ''),
+				maxLength =
+					document.documentElement.offsetWidth > 992 ? 150 : 120
 			if (!text) {
 				return ''
 			}
-			if (text.length > 150) {
-				return text.slice(0, 150) + '...'
+			if (text.length > maxLength) {
+				return text.slice(0, maxLength) + '...'
 			}
 			return text
 		}
 	},
 	data() {
-		return {}
+		return {
+			textMaxLength: 0
+		}
 	},
-	created() {
-		// console.log('this.articleList :', this.articleList)
-	}
+	created() {}
 }
 </script>
 
@@ -269,6 +271,59 @@ export default {
 			transition: all 0.3s;
 			border: 1px solid #a0dad0;
 			color: #a0dad0;
+		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.article-info {
+		.article-left {
+			margin-bottom: 20px;
+			.user {
+				margin-right: 7px;
+				margin-top: 7px;
+			}
+			.title {
+				line-height: 30px;
+			}
+			.left-content {
+				line-height: 20px;
+				font-size: 14px;
+			}
+			.more {
+				margin: 0;
+				height: 20px;
+				.border-line {
+					top: 4px;
+				}
+				.el-icon-more {
+					font-size: 20px;
+				}
+			}
+			&:hover .article-hover {
+				opacity: 0;
+			}
+		}
+		.article-right {
+			margin-left: 10px;
+			margin-bottom: 20px;
+			.article-content {
+				padding: 15px;
+				margin-right: 70px;
+				font-size: 14px;
+			}
+			.user {
+				margin-left: 0;
+			}
+			.more {
+				margin: 0;
+				height: 10px;
+				.border-line {
+					top: 0;
+				}
+			}
+			&:hover .article-hover {
+				opacity: 0;
+			}
 		}
 	}
 }

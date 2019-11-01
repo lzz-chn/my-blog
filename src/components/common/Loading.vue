@@ -21,4 +21,9 @@ export default {
 	height: 100%;
 	background: url(../../assets/load.gif) no-repeat center;
 }
+@media screen and (max-width: 992px) {
+	.loading {
+		background-size: 200px, 200px;
+	}
+}
 </style>

@@ -27,31 +27,19 @@
 				</div>
 				<div class="search">
 					<i class="el-icon-search"></i>
-					<input
-						v-model="searchData"
-						class="inp"
-						type="text"
-						placeholder="Search..."
-						@keyup.enter="search"
-					/>
+					<input v-model="searchData" class="inp" type="text" placeholder="Search..." @keyup.enter="search" />
 				</div>
 				<router-link to="/admin/login">
 					<i class="el-icon-user"></i>
 				</router-link>
 			</div>
 		</div>
-		<div
-			class="centerBg"
-			v-if="$route.name == 'Home'|| $route.name == 'ClassifyBase'"
-			:style="bgImg"
-		>
+		<div class="centerBg" v-if="$route.name == 'Home'|| $route.name == 'ClassifyBase'" :style="bgImg">
 			<div class="userInfo">
 				<!-- <img class="user" src="@/assets/akinadeaava.jpg" /> -->
 				<img class="user" :src="userInfo.avatar || '@/assets/akinadeaava.jpg '" />
 				<!-- <div class="info">Carpe Diem and Do what I like</div> -->
-				<div
-					class="info"
-				>{{this.userInfo.slogan ||" Carpe Diem and Do what I like"}}</div>
+				<div class="info">{{this.userInfo.slogan ||" Carpe Diem and Do what I like"}}</div>
 				<ul class="share">
 					<li>
 						<a href="https://weibo.com" title="weibo" target="_blank">
@@ -166,9 +154,6 @@ export default {
 					font-size: 16px;
 					transition: all 0.3s;
 				}
-				// &:hover .el-icon-search {
-				// 	padding-right: 200px;
-				// }
 				&:hover .inp {
 					width: 200px;
 					padding: 5px;
@@ -231,6 +216,75 @@ export default {
 		.slant-right {
 			right: -20px;
 			transform: rotate(-7deg);
+		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.header {
+		.nav {
+			height: 50px;
+			padding: 0 10px;
+			.logo {
+				height: 40px;
+			}
+			.icons {
+				font-size: 20px;
+
+				.menu {
+					height: 40px;
+					position: relative;
+					ul {
+						position: absolute;
+						background-color: #ffffff;
+						z-index: 1;
+						width: 100px;
+						top: 50px;
+						right: -65px;
+						opacity: 0;
+						li {
+							margin: 0;
+							width: 100%;
+							text-align: center;
+							margin:2px 0;
+						}
+					}
+					&:hover ul {
+						opacity: 1;
+						transition: 0.7s;
+					}
+					.el-icon-menu {
+						cursor: pointer;
+					}
+				}
+				.search {
+					.inp {
+						height: 20px;
+						font-size: 14px;
+					}
+					&:hover .inp {
+						width: 150px;
+						padding: 5px;
+					}
+				}
+			}
+		}
+		.centerBg {
+			height: 300px;
+			.userInfo {
+				margin: 40px auto;
+				.user {
+					height: 80px;
+				}
+				.info {
+					line-height: 20px;
+					padding: 10px;
+					margin: 20px 0;
+					font-size: 12px;
+				}
+			}
+			.slant {
+				height: 100px;
+			}
 		}
 	}
 }

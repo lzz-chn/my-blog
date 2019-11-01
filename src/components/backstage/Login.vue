@@ -22,6 +22,7 @@
 			</el-form>
 			<!-- <p>Tips：admin</p> -->
 		</div>
+		<div class="login-warn">请使用PC端登陆后台管理系统</div>
 		<div class="home">
 			<el-tooltip effect="dark" content="返回博客主页" placement="bottom">
 				<i class="el-icon-s-home" @click="$router.push('/')"></i>
@@ -131,6 +132,9 @@ export default {
 			font-size: 12px;
 		}
 	}
+	.login-warn {
+		display: none;
+	}
 	.home {
 		position: absolute;
 		top: 0;
@@ -139,6 +143,27 @@ export default {
 		font-size: 25px;
 		color: #409eff;
 		cursor: pointer;
+	}
+}
+@media screen and (max-width: 992px) {
+	.login {
+		.login-box {
+			display: none;
+		}
+		.login-warn {
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 300px;
+			text-align: center;
+			background: rgba(255, 255, 255, 0.5);
+			border-radius: 10px;
+			padding: 10px;
+			color: #454749;
+			font-size: 20px;
+		}
 	}
 }
 </style>
