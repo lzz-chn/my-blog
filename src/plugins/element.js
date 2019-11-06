@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'  // 默认主题
+import '../../theme/index.css'  // 自定义主题
 
 import {
     Icon,
